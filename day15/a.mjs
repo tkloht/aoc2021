@@ -35,7 +35,7 @@ input.forEach((row, rowIdx) => {
 let currentKey = "0,0"
 const goalKey = `${input.length - 1},${input[0].length - 1}`
 let iterations = 0
-console.log("goalKey: ", goalKey)
+
 while (iterations < 10000 && !visited.has(goalKey)) {
   iterations += 1
   const current = nodes[currentKey]
@@ -50,10 +50,8 @@ while (iterations < 10000 && !visited.has(goalKey)) {
   visited.add(currentKey)
   unVisited.delete(currentKey)
 
-  // console.log(">>> ", iterations, visited.size, unVisited.size)
   if (unVisited.size > 0) {
     currentKey = [...unVisited].reduce((acc, key) => {
-      // console.log(">>> , ", key, nodes[key].tentativeCost)
       if (nodes[key].tentativeCost < nodes[acc].tentativeCost) {
         return key
       } else {
